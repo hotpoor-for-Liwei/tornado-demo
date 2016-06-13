@@ -19,8 +19,9 @@ from setting import settings
 
 
 class MainHandler(tornado.web.RequestHandler):
-  def get(self):
-    self.write('hello, world!')
+    def get(self):
+        name = self.get_argument("name", "anonymous")
+        self.render('./template/hello.html', name=name)
 
 
 application = tornado.web.Application([
